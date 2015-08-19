@@ -63,7 +63,7 @@ class vector(atom):
                    /(self.calculateVectorLength()*self.calculateVectorLength2())))/(2*np.pi) * 360
 
     def calculateNormalVector(self):
-        list = [self.calculateVector()[-1],self.calculateVector()[-1]]
+        list = [-self.calculateVector()[2],-self.calculateVector2()[2]]
         a=self.calculateVector()
         b=self.calculateVector2()
         a.pop()

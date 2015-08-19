@@ -2,7 +2,7 @@ from atom import *
 from vector import *
 import numpy as np
 
-with open("./H2O2.xyz","r") as f:
+with open("./practice_1/cartesian.gjf","r") as f:
     lines = f.readlines()
 print lines
 
@@ -40,12 +40,12 @@ for i in range(atomNumber):
             Dict[(k,j,i)].readCoordinateForThirdAtom(lines[k+2].strip())
             Dict[(k,j,i)].readCoordinateForSecondAtom(lines[j+2].strip())
             Dict[(k,j,i)].readCoordinate(lines[i+2].strip())
-#            print "angle of", Dict[(k,j,i)].Atom,\
-#                Dict[(k,j,i)].secondAtom, Dict[(k,j,i)].thirdAtom, "is", Dict[(k,j,i)].calculateVectorAngle()
+            print "angle of", Dict[(k,j,i)].Atom,\
+                Dict[(k,j,i)].secondAtom, Dict[(k,j,i)].thirdAtom, "is", Dict[(k,j,i)].calculateVectorAngle()
             print Dict[(k,j,i)].calculateNormalVector()
 
 def dihedral(a,b):
-    return 180-(np.array(a).dot(np.array(b)))/np.sqrt(np.array(a).dot(np.array(a))*np.array(b).dot(np.array(b)))/(2*np.pi)*360
+    return 180-np.arccos((np.array(a).dot(np.array(b)))/np.sqrt(np.array(a).dot(np.array(a))*np.array(b).dot(np.array(b))))/(2*np.pi)*360
 
 for i in range(3,atomNumber):
     print dihedral(Dict[(i-1,i-2,i-3)].calculateNormalVector(),Dict[(i,i-1,i-2)].calculateNormalVector())

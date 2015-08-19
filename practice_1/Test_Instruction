@@ -1,0 +1,4 @@
+1.	Install 'nose' using pip:
+		pip install nose
+2.	Run 'nosetests' to see the result:
+		nosetests	
