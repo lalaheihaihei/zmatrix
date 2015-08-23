@@ -1,0 +1,7 @@
+#!/bin/bash
+'''
+script to find new dimer MODECAR and make a virbration file.
+'''
+GetCP2KDimerVector.py cp2k-1.restart
+cp2klog2xyz-debug.pl cp2k-pos-1.xyz | sed '1d' > last.xyz 
+modecar2xyz.py

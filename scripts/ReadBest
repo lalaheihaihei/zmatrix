@@ -1,0 +1,13 @@
+#!/bin/bash
+'''
+pick the last geo from every job folder to one xyz file.
+'''
+for i in $(seq 1 100)
+do
+ echo $i
+ cd  ${i}||exit 0
+ cp2klog2xyz.pl cp2k-pos-1.xyz > end.xyz||exit 0
+ cd  ..
+ cat  ./${i}/end.xyz >>best.log
+done
+

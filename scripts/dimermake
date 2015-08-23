@@ -1,0 +1,14 @@
+#!/bin/bash
+'''
+script to simplify the dimer start process.
+'''
+dmolcar2xyz.py  vector1.car
+dmolcar2xyz.py  vector2.car
+cp vector2.xyz coord.inc
+if [ "$1" != "-r" ]; then
+  echo "modecar is from vector1.car to vector2.car"
+  MakeDimerVector.py vector1.xyz vector2.xyz MODECAR
+else
+  echo "modecar is from vector2.car to vector1.car"
+  MakeDimerVector.py vector2.xyz vector1.xyz MODECAR
+fi
